@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 @Data
 @EqualsAndHashCode(of = {"id"})
-@Table(name = "item")
+@Table(name = "items")
 public class Item {
 
     @Id

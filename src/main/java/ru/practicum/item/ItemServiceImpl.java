@@ -34,6 +34,6 @@ public class ItemServiceImpl implements ItemService {
         if (userId == null || itemId == null) {
             throw new IllegalArgumentException("UserId и ItemId должны быть не null");
         }
-        repository.deleteByUserIdAndItemId(userId, itemId);
+        repository.deleteByUserIdAndId(userId, itemId);
     }
 }
