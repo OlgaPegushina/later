@@ -1,14 +1,17 @@
 package ru.practicum.user;
 
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 class UserServiceImpl implements UserService {
-    private final UserRepository repository;
+    UserRepository repository;
 
     @Override
     public List<User> getAllUsers() {
