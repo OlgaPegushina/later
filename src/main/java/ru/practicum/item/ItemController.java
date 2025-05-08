@@ -21,13 +21,13 @@ public class ItemController {
 
     @PostMapping
     public ItemDto add(@RequestHeader("X-Later-User-Id") Long userId,
-                    @RequestBody Item item) {
+                    @RequestBody ItemDto item) {
         return itemService.addNewItem(userId, item);
     }
 
     @DeleteMapping("/{itemId}")
     public void deleteItem(@RequestHeader("X-Later-User-Id") long userId,
-                           @PathVariable(name="itemId") long itemId) {
+                           @PathVariable(name = "itemId") long itemId) {
         itemService.deleteItem(userId, itemId);
     }
 }

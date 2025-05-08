@@ -15,15 +15,14 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemDto> getItems(Long userId) {
-        return repository.findByUserId(userId).stream()
-                .map(ItemDto::mapToItemDto)
-                .toList();
+        List<Item> userItems = repository.findByUserId(userId);
+        return ItemDto.mapToItemDto(userItems);
     }
 
     @Override
-    public ItemDto addNewItem(Long userId, Item item) {
-        item.setUserId(userId);
-        return ItemDto.mapToItemDto(repository.save(item));
+    public ItemDto addNewItem(Long userId, ItemDto itemDto) {
+        Item item = repository.save(ItemDto.mapToItem(itemDto, userId));
+        return ItemDto.mapToItemDto(item);
     }
 
     @Override
