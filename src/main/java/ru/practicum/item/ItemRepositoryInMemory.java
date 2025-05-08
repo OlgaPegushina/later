@@ -1,11 +1,16 @@
 package ru.practicum.item;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class ItemRepositoryInMemory implements ItemRepository {
     Map<Long, Item> items = new HashMap();
 
