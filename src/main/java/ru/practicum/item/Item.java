@@ -20,7 +20,6 @@ public class Item {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Column
     private String url;
 
     @ElementCollection
