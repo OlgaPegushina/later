@@ -13,18 +13,18 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Transactional(readOnly = true)
 class UserServiceImpl implements UserService {
-    UserRepository repository;
+    UserRepository userRepository;
 
     @Override
     public List<UserDto> getAllUsers() {
-        List<User> users = repository.findAll();
+        List<User> users = userRepository.findAll();
         return UserDto.mapToUserDto(users);
     }
 
     @Override
     @Transactional
     public UserDto saveUser(UserDto userDto) {
-        User user = repository.save(UserDto.mapToNewUser(userDto));
+        User user = userRepository.save(UserDto.mapToNewUser(userDto));
         return UserDto.mapToUserDto(user);
     }
 }

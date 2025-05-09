@@ -11,4 +11,7 @@ services:
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=12345
     healthcheck:
-      test: ["CMD", "bash", "-c", "pg_isready -q -d $$POSTGRES_DB -U
+      test: [ "CMD", "bash", "-c", "pg_isready -q -d $$POSTGRES_DB -U $$POSTGRES_USER" ]
+      timeout: 5s
+      interval: 5s
+      retries: 10

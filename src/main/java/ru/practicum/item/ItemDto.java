@@ -3,6 +3,7 @@ package ru.practicum.item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.practicum.user.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ItemDto implements Serializable {
     public static ItemDto mapToItemDto(Item item) {
         return new ItemDto(
                 item.getId(),
-                item.getUserId(),
+                item.getUser().getId(),
                 item.getUrl(),
                 new HashSet<>(item.getTags())
         );
@@ -36,9 +37,9 @@ public class ItemDto implements Serializable {
         return dtos;
     }
 
-    public static Item mapToItem(ItemDto itemDto, long userId) {
+    public static Item mapToItem(ItemDto itemDto, User user) {
         Item item = new Item();
-        item.setUserId(userId);
+        item.setUser(user);
         item.setUrl(itemDto.getUrl());
         item.setTags(itemDto.getTags());
         return item;
